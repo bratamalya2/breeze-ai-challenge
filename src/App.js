@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { initializeApp } from "firebase/app";
+import firebaseConfig from "./config/firebaseConfig";
+import SignUp from "./components/signUp";
+import SignIn from "./components/signIn";
+import HelloWorld from "./components/helloWorld";
+import "./App.css";
 
 function App() {
+  initializeApp(firebaseConfig);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<SignUp />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/helloworld" element={<HelloWorld />} />
+      </Routes>
     </div>
   );
 }
